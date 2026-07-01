@@ -247,23 +247,24 @@
     color:var(--steel-dim);
   }
   .milestones li:last-child{ border-bottom:none; }
-  .milestones li span{
+  .milestones li span:last-child{
     color:var(--flame);
     text-align:right;
     flex-shrink:0;
     margin-left:auto;
   }
   .milestones li.active{ color:var(--steel); }
-  .milestones li.active span{ color:var(--flame); }
+  .milestones li.active span:last-child{ color:var(--flame); }
 
-  @media (max-width:480px){
+  @media (max-width:820px){
     .milestones li{
       flex-direction:column;
-      align-items:flex-end;
+      align-items:flex-start;
       gap:4px;
     }
-    .milestones li > *:first-child{
-      align-self:flex-start;
+    .milestones li span:last-child{
+      margin-left:0;
+      text-align:left;
     }
   }
 
@@ -413,7 +414,7 @@
       <a href="#roles" class="btn btn-primary">Ver roles abiertos</a>
       <a href="#requisitos" class="btn btn-ghost">Requisitos</a>
     </div>
-    <p class="scroll-cue" style="font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;">Desplázate ↓</p>
+    <p class="scroll-cue">Desplázate ↓</p>
   </section>
 
   <section id="elite-path">
@@ -430,9 +431,9 @@
       </div>
       <div class="path-visual">
         <ul class="milestones">
-          <li class="active">Reclutamiento <span>Decide el roster</span></li>
-          <li>Rankeds <span>Entrenamiento</span></li>
-          <li>Open Series · Ed. 6 <span>Elite Path · Eliminación</span></li>
+          <li class="active"><span>Reclutamiento</span><span>Decide el roster</span></li>
+          <li><span>Rankeds</span><span>Entrenamiento</span></li>
+          <li><span>Open Series · Ed. 6</span><span>Elite Path · Eliminación</span></li>
         </ul>
       </div>
     </div>
