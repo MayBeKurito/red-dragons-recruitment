@@ -32,7 +32,6 @@
     position:relative;
   }
 
-  /* ---------- Ambient ember canvas ---------- */
   #embers{
     position:fixed;
     inset:0;
@@ -54,12 +53,11 @@
   main{position:relative; z-index:2;}
 
   section{
-    padding: clamp(64px,10vw,120px) clamp(20px,6vw,80px);
+    padding: clamp(40px,6vw,60px) clamp(20px,6vw,60px);
     max-width:1200px;
     margin:0 auto;
   }
 
-  /* ---------- HERO ---------- */
   .hero{
     min-height:100vh;
     display:flex;
@@ -68,8 +66,8 @@
     justify-content:center;
     text-align:center;
     position:relative;
-    padding-top:80px;
-    padding-bottom:80px;
+    padding-top:60px;
+    padding-bottom:60px;
   }
 
   .ring{
@@ -179,7 +177,6 @@
   }
   @keyframes pulse{ 0%,100%{opacity:.35;} 50%{opacity:.9;} }
 
-  /* ---------- SECTION HEADERS ---------- */
   .sec-head{
     display:flex;
     align-items:baseline;
@@ -204,7 +201,6 @@
     background:linear-gradient(90deg,var(--line),transparent);
   }
 
-  /* ---------- ELITE PATH ---------- */
   .path-grid{
     display:grid;
     grid-template-columns:1.1fr 1fr;
@@ -240,6 +236,8 @@
   .milestones li{
     display:flex;
     justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
     padding:16px 0;
     border-bottom:1px solid var(--line);
     font-family:'Cinzel',serif;
@@ -249,15 +247,30 @@
     color:var(--steel-dim);
   }
   .milestones li:last-child{ border-bottom:none; }
-  .milestones li span{ color:var(--flame); }
+  .milestones li span{
+    color:var(--flame);
+    text-align:right;
+    flex-shrink:0;
+    margin-left:auto;
+  }
   .milestones li.active{ color:var(--steel); }
   .milestones li.active span{ color:var(--flame); }
+
+  @media (max-width:480px){
+    .milestones li{
+      flex-direction:column;
+      align-items:flex-end;
+      gap:4px;
+    }
+    .milestones li > *:first-child{
+      align-self:flex-start;
+    }
+  }
 
   @media (max-width:820px){
     .path-grid{ grid-template-columns:1fr; }
   }
 
-  /* ---------- ROLES ---------- */
   .roles-grid{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -312,7 +325,6 @@
     color:var(--steel-dim);
   }
 
-  /* ---------- REQUIREMENTS ---------- */
   .req-wrap{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -348,10 +360,9 @@
   }
   .open-banner p b{ color:var(--flame); }
 
-  /* ---------- CLOSING CTA ---------- */
   .closing{
     text-align:center;
-    padding-bottom:100px;
+    padding-bottom:70px;
   }
   .closing .sec-title{ margin:0 auto 18px; }
   .closing p{
@@ -392,7 +403,6 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="ring"></div>
     <p class="eyebrow">Reclutamiento oficial</p>
@@ -403,10 +413,9 @@
       <a href="#roles" class="btn btn-primary">Ver roles abiertos</a>
       <a href="#requisitos" class="btn btn-ghost">Requisitos</a>
     </div>
-    <p class="scroll-cue">Desplázate ↓</p>
+    <p class="scroll-cue" style="font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;">Desplázate ↓</p>
   </section>
 
-  <!-- ELITE PATH -->
   <section id="elite-path">
     <div class="sec-head">
       <span class="sec-num">01</span>
@@ -429,7 +438,6 @@
     </div>
   </section>
 
-  <!-- ROLES -->
   <section id="roles">
     <div class="sec-head">
       <span class="sec-num">02</span>
@@ -465,7 +473,6 @@
     </div>
   </section>
 
-  <!-- REQUISITOS -->
   <section id="requisitos">
     <div class="sec-head">
       <span class="sec-num">03</span>
@@ -496,7 +503,6 @@
     </div>
   </section>
 
-  <!-- CIERRE -->
   <section class="closing">
     <div class="sec-head" style="justify-content:center;">
       <h2 class="sec-title">¿Listo para el Elite Path?</h2>
@@ -511,7 +517,6 @@
 <footer>Red Dragons · Honor of Kings · Open Series · Edición 6 · Elite Path</footer>
 
 <script>
-  // Ember particle field — subtle, ambient, respects reduced motion
   const canvas = document.getElementById('embers');
   const ctx = canvas.getContext('2d');
   let particles = [];
